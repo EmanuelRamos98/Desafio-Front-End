@@ -1,0 +1,36 @@
+.container_workspaces {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 300px;
+}
+
+.workspaces {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.workspaces_fecha_creacion {
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    gap: 20px;
+    padding: 10px;
+}
+
+@media screen and (min-width:650px) {
+    .container_workspaces{
+        width: 650px;
+        font-size: 2rem;
+    }
+}
+
+@media screen and (min-width:980px) {
+    .container_workspaces{
+        width: 1200px;
+        font-size: 2rem;
+    }
+}

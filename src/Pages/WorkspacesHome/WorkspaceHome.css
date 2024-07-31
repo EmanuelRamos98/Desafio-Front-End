@@ -1,0 +1,12 @@
+.workspacesHome{
+    display: flex;
+    padding: 30px;
+    flex-direction: column;
+}
+.nombre{
+    font-size: 2rem;
+}
+.canales{
+    padding-top: 20px;
+    font-size: 1.5rem;
+}

@@ -1,0 +1,31 @@
+.container_header{
+    height: 60px;
+    width: 100%;
+    background-color: blueviolet;
+}
+.perfil_img_container{
+    display: flex;
+    justify-content: flex-end;
+    width: 93%;
+    padding: 5px;
+}
+.img_perfil{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+
+@media screen and (min-width:650px) {
+    .container_header{
+        height: 70px;
+    }
+    .img_perfil{
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media screen and (min-width:980px) {
+    
+}
