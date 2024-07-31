@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { obtenerCanal, obtenerMensajes, obtenerWorkspaces } from '../WorkspacesHome/obtenerWorkspaces'
 import Header from '../Header/Header'
+import FormEnviarMensajes from './FormEnviarMensajes/FormEnviarMensajes'
 
 const Canales = () => {
     const { id_workspace, id_canal } = useParams()
@@ -10,6 +11,19 @@ const Canales = () => {
     const workspace = workspaces.find(workspace => workspace.id === id_workspace)
     const canales = obtenerCanal(id_workspace)
     const canal = canales.find(canal => canal.id === id_canal)
+    
+    const [nuevoMensaje, setNuevoMensaje] = useState(mensajes)
+    const handleSubmitMensaje =(e)=>{
+        e.preventDefault()
+        const mensajeValue ={
+            author: 'yo',
+            fecha: 'hoy a las 20:00',
+            id: '6',
+            img: '',
+            texto: [e.target.text.value]
+        }
+        setNuevoMensaje([...nuevoMensaje, mensajeValue])
+    }
 
     return (
         <div>
@@ -17,7 +31,7 @@ const Canales = () => {
             <h2>{workspace.nombre}</h2>
             <h2>{canal.nombre}</h2>
             <div>
-                {mensajes.map(mensajes =>
+                {nuevoMensaje.map(mensajes =>
                     <div key={mensajes.id}>
                         <span>{mensajes.autor}</span>
                         <p>{mensajes.texto}</p>
@@ -25,6 +39,7 @@ const Canales = () => {
                     </div>
                 )}
             </div>
+            <FormEnviarMensajes handleSubmitMensaje={handleSubmitMensaje}/>
         </div>
     )
 }

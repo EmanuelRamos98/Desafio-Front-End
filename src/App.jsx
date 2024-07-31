@@ -6,13 +6,13 @@ import Canales from './Pages/Canales/Canales'
 
 
 
-const App = ()=> {
+const App = () => {
     return (
         <>
             <Routes>
-                <Route path='/' element={<Home/>}/>
-                <Route path='/workspacesHome/:id_workspace' element={<WorkspacesHome/>} />
-                <Route path="/workspace/:id_workspace/canal/:id_canal" element={<Canales />} />
+                <Route path='/' element={<Home />} />
+                    <Route path='/workspacesHome/:id_workspace' element={<WorkspacesHome />} />
+                    <Route path="/workspace/:id_workspace/canal/:id_canal" element={<Canales />} />
             </Routes>
         </>
     )
