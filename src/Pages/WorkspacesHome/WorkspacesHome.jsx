@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { obtenerCanal, obtenerWorkspaces } from './obtenerWorkspaces'
 import Header from '../Header/Header'
@@ -9,23 +9,34 @@ import FormHomeworkspaces from './FormHomeworkspaces/FormHomeworkspaces'
 
 const WorkspacesHome = () => {
     const { id_workspace } = useParams()
-
     const workspaces = obtenerWorkspaces()
     const workspace = workspaces.find(workspace => workspace.id === id_workspace)
     const canales = obtenerCanal(id_workspace)
 
+    const [nuevoCanal, setNuevoCanales] = useState('')
 
-    const [nuevoCanal, setNuevoCanales] = useState(canales)
+    useEffect(()=>{
+        setNuevoCanales(canales)
+    },[])
 
-    const handleSubmit =(e)=>{
+    const agregarCanal = (name)=>{
+        const newCanal = {name}
+        const updateCanal = [...nuevoCanal, newCanal]
+        setNuevoCanales(updateCanal)
+        localStorage.setItem('canal', JSON.stringify(updateCanal))
+    }
+
+
+    const handleSubmit = (e) => {
         e.preventDefault()
-        const canalesValue ={
+        const canalesValue = {
             nombre: [e.target.text.value],
             mensajes: [],
             id: '4'
-        } 
+        }
         setNuevoCanales([...nuevoCanal, canalesValue])
-    } 
+    }
+
 
 
     return (
@@ -34,7 +45,7 @@ const WorkspacesHome = () => {
             <div className='workspacesHome'>
                 <h2 className="nombre"># {workspace.nombre}</h2>
                 <div className="canales">
-                    {nuevoCanal.map(canal =>
+                    {canales.map(canal =>
                         <div key={canal.id}>
                             <Link to={`/workspace/${id_workspace}/canal/${canal.id}`}># {canal.nombre}</Link>
                         </div>

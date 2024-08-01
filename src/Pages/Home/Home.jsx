@@ -4,14 +4,15 @@ import { obtenerUser } from '../WorkspacesHome/obtenerWorkspaces';
 import Workspaces from './Workspaces/Workspaces';
 import './home.css'
 import Header from '../Header/Header';
+import FormAgregarWorkspaces from './FormAgregarWorkspaces/FormAgregarWorkspaces';
 
 const Home = () => {
     guardar()
     const user = obtenerUser()
     return (
         <section className='section_home'>
-            <Header/>
-                <h1 className='title_home'>Slacke</h1>
+            <Header />
+            <h1 className='title_home'>Slacke</h1>
             <div className='container_home'>
                 <img src={user.img} alt="" className='img_home' />
                 <div className="container_home_name">Bienvenido
@@ -20,9 +21,9 @@ const Home = () => {
                     </h2>
                 </div>
             </div>
-                <div className="container_workspaces_home">
-                    <Workspaces />
-                </div>
+            <div className="container_workspaces_home">
+                <Workspaces />
+            </div>
         </section>
     )
 
