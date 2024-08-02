@@ -4,7 +4,7 @@ import { obtenerUser } from '../WorkspacesHome/obtenerWorkspaces';
 import Workspaces from './Workspaces/Workspaces';
 import './home.css'
 import Header from '../Header/Header';
-import FormAgregarWorkspaces from './FormAgregarWorkspaces/FormAgregarWorkspaces';
+
 
 const Home = () => {
     guardar()

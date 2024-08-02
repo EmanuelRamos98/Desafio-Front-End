@@ -9,35 +9,38 @@ import FormHomeworkspaces from './FormHomeworkspaces/FormHomeworkspaces'
 
 const WorkspacesHome = () => {
     const { id_workspace } = useParams()
-    const workspaces = obtenerWorkspaces()
+    const workspaceSinParsear = localStorage.getItem('nuevoMook')
+    const workspaces = JSON.parse(workspaceSinParsear)
     const workspace = workspaces.find(workspace => workspace.id === id_workspace)
-    const canales = obtenerCanal(id_workspace)
+    const canales = workspace.canales
 
-    const [nuevoCanal, setNuevoCanales] = useState('')
+    const [mostrar, setMostrar] = useState(false)
+    const [newCanales, setNewCanales] = useState(canales)
+    const [nextId, setNextId] = useState(4)
 
-    useEffect(()=>{
-        setNuevoCanales(canales)
-    },[])
-
-    const agregarCanal = (name)=>{
-        const newCanal = {name}
-        const updateCanal = [...nuevoCanal, newCanal]
-        setNuevoCanales(updateCanal)
-        localStorage.setItem('canal', JSON.stringify(updateCanal))
+    const toggle = () => {
+        setMostrar(!mostrar)
     }
-
 
     const handleSubmit = (e) => {
         e.preventDefault()
         const canalesValue = {
             nombre: [e.target.text.value],
             mensajes: [],
-            id: '4'
+            id: nextId.toString()
         }
-        setNuevoCanales([...nuevoCanal, canalesValue])
+        setNextId(nextId + 1)
+        setNewCanales([...newCanales, canalesValue])
     }
 
+    const guardarCanales = () => {
+        const canalesJSON = JSON.stringify(newCanales)
+        return localStorage.setItem('nuevoMook2', canalesJSON)
+    }
+    guardarCanales()
 
+    const canalesLocalStorage = localStorage.getItem('nuevoMook2')
+    const parseCanal = JSON.parse(canalesLocalStorage)
 
     return (
         <section>
@@ -45,14 +48,17 @@ const WorkspacesHome = () => {
             <div className='workspacesHome'>
                 <h2 className="nombre"># {workspace.nombre}</h2>
                 <div className="canales">
-                    {canales.map(canal =>
+                    {parseCanal.map(canal =>
                         <div key={canal.id}>
                             <Link to={`/workspace/${id_workspace}/canal/${canal.id}`}># {canal.nombre}</Link>
                         </div>
                     )}
                 </div>
             </div>
-            <FormHomeworkspaces handleSubmit={handleSubmit} />
+            {mostrar && <FormHomeworkspaces handleSubmit={handleSubmit} />}
+            <button onClick={toggle}>
+                {mostrar ? 'Cancelar' : 'Crear Canal'}
+            </button>
         </section>
     )
 }

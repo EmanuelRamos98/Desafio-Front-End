@@ -3,23 +3,19 @@ import { Link } from 'react-router-dom'
 import { obtenerWorkspaces } from '../../WorkspacesHome/obtenerWorkspaces'
 import './workspaces.css'
 import FormAgregarWorkspaces from '../FormAgregarWorkspaces/FormAgregarWorkspaces'
+import { obtenerFechaDeHoy } from '../../../Componets/fecha'
 
 const Workspaces = () => {
     const workspace = obtenerWorkspaces()
     const [newWorkspace, setNewWorkspace] = useState(workspace)
     const [nextId, setNextId] = useState(4)
-
-    const obtenerFechaDeHoy = ()=>{
-        const fechaActual = new Date()
-        const dia = fechaActual.getDate().toString().padStart(2, '0')
-        const mes = (fechaActual.getMonth()+1).toString().padStart(2, '0')
-        const año = fechaActual.getFullYear()
-
-        const fechaFormateada = `${dia}-${mes}-${año}`
-        return fechaFormateada
-    }
+    const [mostrar, setMostrar] = useState(false)
     const fecha = obtenerFechaDeHoy()
 
+
+    const toggle = () => {
+        setMostrar(!mostrar)
+    }
 
     const handleWorkspace = (e) => {
         e.preventDefault()
@@ -55,7 +51,10 @@ const Workspaces = () => {
                     </span>
                 </div>
             )}
-            <FormAgregarWorkspaces handleWorkspace={handleWorkspace} />
+            {mostrar && <FormAgregarWorkspaces handleWorkspace={handleWorkspace} />}
+            <button onClick={toggle}>
+                {mostrar ? 'Cancelar' : 'Crear Workspace'}
+            </button>
         </div>
     )
 }

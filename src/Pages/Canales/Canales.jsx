@@ -1,33 +1,39 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { obtenerCanal, obtenerMensajes, obtenerWorkspaces } from '../WorkspacesHome/obtenerWorkspaces'
 import Header from '../Header/Header'
 import FormEnviarMensajes from './FormEnviarMensajes/FormEnviarMensajes'
+import { obtenerFechaDeHoy } from '../../Componets/fecha'
 
 const Canales = () => {
     const { id_workspace, id_canal } = useParams()
-    const mensajes = obtenerMensajes(id_workspace, id_canal)
-    const workspaces = obtenerWorkspaces()
+    const workspaceSinParsear = localStorage.getItem('nuevoMook')
+    const workspaces = JSON.parse(workspaceSinParsear)
     const workspace = workspaces.find(workspace => workspace.id === id_workspace)
-    const canales = obtenerCanal(id_workspace)
-    const canal = canales.find(canal => canal.id === id_canal)
-    
+    const canales = localStorage.getItem('nuevoMook2')
+    const canalparsado = JSON.parse(canales)
+    const canal = canalparsado.find(canal => canal.id === id_canal)
+    const mensajes = canal.mensajes
+
+    const [nextId, setNextId] = useState(6)
     const [nuevoMensaje, setNuevoMensaje] = useState(mensajes)
-    const handleSubmitMensaje =(e)=>{
+    const fecha = obtenerFechaDeHoy()
+
+    const handleSubmitMensaje = (e) => {
         e.preventDefault()
-        const mensajeValue ={
-            author: 'yo',
-            fecha: 'hoy a las 20:00',
-            id: '6',
+        const mensajeValue = {
+            author: 'Pepe',
+            fecha: fecha,
+            id: nextId.toString(),
             img: '',
             texto: [e.target.text.value]
         }
+        setNextId(nextId + 1)
         setNuevoMensaje([...nuevoMensaje, mensajeValue])
     }
 
     return (
         <div>
-            <Header/>
+            <Header />
             <h2>{workspace.nombre}</h2>
             <h2>{canal.nombre}</h2>
             <div>
@@ -39,7 +45,7 @@ const Canales = () => {
                     </div>
                 )}
             </div>
-            <FormEnviarMensajes handleSubmitMensaje={handleSubmitMensaje}/>
+            <FormEnviarMensajes handleSubmitMensaje={handleSubmitMensaje} />
         </div>
     )
 }
