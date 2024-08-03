@@ -1,5 +1,5 @@
 .titulo_canal{
-    padding-top: 15px;
+    margin-top: 70px;
 }
 .container_chat {
     width: 100%;
@@ -55,12 +55,7 @@
     justify-content: center;
     align-items: center;
     position: fixed;
-    top: 91.5vh;
+    bottom: 0;
     background-color: blueviolet;
     height: 80px;
-}
-@media screen and (min-width:650px){
-    .container_canal_form{
-        top: 87.8vh;
-    }
 }

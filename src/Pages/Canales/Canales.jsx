@@ -39,7 +39,7 @@ const Canales = () => {
             <div className="container_chat">
                 <div className="canal_container_chat">
                     <h2 className='titulo_canal'>{workspace.nombre}</h2>
-                    <h2 className='titulo_canal'>{canal.nombre}</h2>
+                    <h2>{canal.nombre}</h2>
                     <div className='canal_mensajes_container'>
                         {nuevoMensaje.map(mensajes =>
                             <div key={mensajes.id} className='canal_mensaje'>
