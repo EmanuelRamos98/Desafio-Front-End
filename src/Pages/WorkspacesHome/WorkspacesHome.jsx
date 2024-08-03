@@ -46,7 +46,7 @@ const WorkspacesHome = () => {
         <section>
             <Header />
             <div className='workspacesHome'>
-                <h2 className="nombre"># {workspace.nombre}</h2>
+                <h2 className="nombre"> {workspace.nombre}</h2>
                 <div className="canales">
                     {parseCanal.map(canal =>
                         <div key={canal.id} className='nombre_canal_workspaceHome'>
