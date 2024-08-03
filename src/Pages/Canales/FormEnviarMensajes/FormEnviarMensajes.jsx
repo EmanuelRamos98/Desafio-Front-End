@@ -1,10 +1,12 @@
 import React from 'react'
+import './FormEnviarMensajes.css'
+import { IoMdSend } from 'react-icons/io'
 
-const FormEnviarMensajes = ({handleSubmitMensaje}) => {
+const FormEnviarMensajes = ({ handleSubmitMensaje }) => {
     return (
-        <form onSubmit={handleSubmitMensaje}>
+        <form onSubmit={handleSubmitMensaje} className='container_form_enviar'>
             <input type="text" id='text' name='text' className='text_mensaje' />
-            <input type="submit" id='btn' name='btn_mensaje' className='btn_mensaje' />
+            <button className='btn_mensaje'><IoMdSend /></button>
         </form>
     )
 }

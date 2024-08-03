@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom'
 import Header from '../Header/Header'
 import FormEnviarMensajes from './FormEnviarMensajes/FormEnviarMensajes'
 import { obtenerFechaDeHoy } from '../../Componets/fecha'
+import './Canales.css'
+
 
 const Canales = () => {
     const { id_workspace, id_canal } = useParams()
@@ -21,7 +23,7 @@ const Canales = () => {
     const handleSubmitMensaje = (e) => {
         e.preventDefault()
         const mensajeValue = {
-            author: 'Pepe',
+            autor: 'Pepe',
             fecha: fecha,
             id: nextId.toString(),
             img: '',
@@ -32,21 +34,27 @@ const Canales = () => {
     }
 
     return (
-        <div>
+        <section>
             <Header />
-            <h2>{workspace.nombre}</h2>
-            <h2>{canal.nombre}</h2>
-            <div>
-                {nuevoMensaje.map(mensajes =>
-                    <div key={mensajes.id}>
-                        <span>{mensajes.autor}</span>
-                        <p>{mensajes.texto}</p>
-                        <p>{mensajes.fecha}</p>
+            <div className="container_chat">
+                <div className="canal_container_chat">
+                    <h2 className='titulo_canal'>{workspace.nombre}</h2>
+                    <h2 className='titulo_canal'>{canal.nombre}</h2>
+                    <div className='canal_mensajes_container'>
+                        {nuevoMensaje.map(mensajes =>
+                            <div key={mensajes.id} className='canal_mensaje'>
+                                <span className='canal_nombre'>{mensajes.autor}</span>
+                                <p className='canal_texto'>{mensajes.texto}</p>
+                                <p className='canal_fecha'>{mensajes.fecha}</p>
+                            </div>
+                        )}
                     </div>
-                )}
+                    <div className="container_canal_form">
+                        <FormEnviarMensajes handleSubmitMensaje={handleSubmitMensaje} />
+                    </div>
+                </div>
             </div>
-            <FormEnviarMensajes handleSubmitMensaje={handleSubmitMensaje} />
-        </div>
+        </section>
     )
 }
 

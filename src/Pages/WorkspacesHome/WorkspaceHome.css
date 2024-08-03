@@ -1,7 +1,9 @@
 .workspacesHome{
     display: flex;
     padding: 30px;
+    
     flex-direction: column;
+    gap: 10px;
 }
 .nombre{
     font-size: 2rem;
@@ -9,4 +11,21 @@
 .canales{
     padding-top: 20px;
     font-size: 1.5rem;
+    color: blueviolet;
+}
+.nombre_canal_workspaceHome{
+    padding-bottom: 20px;
+    padding-left: 30px;
+    display: flex;
+}
+.container_btn_workspaceHome{
+    width: 100%;
+    padding: 20px;
+}
+.btn_workspaceHome{
+    width: 300px;
+    padding: 10px;
+    color: white;
+    background-color: blueviolet;
+    border-radius: 10px;
 }

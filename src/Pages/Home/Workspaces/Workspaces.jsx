@@ -4,6 +4,7 @@ import { obtenerWorkspaces } from '../../WorkspacesHome/obtenerWorkspaces'
 import './workspaces.css'
 import FormAgregarWorkspaces from '../FormAgregarWorkspaces/FormAgregarWorkspaces'
 import { obtenerFechaDeHoy } from '../../../Componets/fecha'
+import { FaArrowRight } from 'react-icons/fa'
 
 const Workspaces = () => {
     const workspace = obtenerWorkspaces()
@@ -47,12 +48,12 @@ const Workspaces = () => {
                 <div className='workspaces' key={data.id}>
                     <h2 className="workspaces_name">{data.nombre}</h2>
                     <span className="workspaces_fecha_creacion">{data.fecha_creacion}
-                        <Link to={'/WorkspacesHome/' + data.id}>Ver+</Link>
+                        <Link to={'/WorkspacesHome/' + data.id} className='btn_workspace'><FaArrowRight /></Link>
                     </span>
                 </div>
             )}
             {mostrar && <FormAgregarWorkspaces handleWorkspace={handleWorkspace} />}
-            <button onClick={toggle}>
+            <button onClick={toggle} className='btn_workspace_new'>
                 {mostrar ? 'Cancelar' : 'Crear Workspace'}
             </button>
         </div>

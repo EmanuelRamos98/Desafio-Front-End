@@ -19,18 +19,29 @@
     width: 300px;
     gap: 20px;
     padding: 10px;
+    font-size: 1.2rem;
 }
-
+.btn_workspace{
+    color: black;
+}
+.btn_workspace_new{
+    padding: 10px;
+    width: 300px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    background-color: blueviolet;
+    color: white;
+}
 @media screen and (min-width:650px) {
     .container_workspaces{
         width: 650px;
-        font-size: 2rem;
+        font-size: 1.2rem;
     }
 }
 
 @media screen and (min-width:980px) {
     .container_workspaces{
         width: 1200px;
-        font-size: 2rem;
+        font-size: 1.2rem;
     }
 }

@@ -49,16 +49,20 @@ const WorkspacesHome = () => {
                 <h2 className="nombre"># {workspace.nombre}</h2>
                 <div className="canales">
                     {parseCanal.map(canal =>
-                        <div key={canal.id}>
-                            <Link to={`/workspace/${id_workspace}/canal/${canal.id}`}># {canal.nombre}</Link>
+                        <div key={canal.id} className='nombre_canal_workspaceHome'>
+                            <Link to={`/workspace/${id_workspace}/canal/${canal.id}`}>
+                                # {canal.nombre}
+                            </Link>
                         </div>
                     )}
                 </div>
+                <div className="container_btn_workspaceHome">
+                    {mostrar && <FormHomeworkspaces handleSubmit={handleSubmit} />}
+                    <button onClick={toggle} className='btn_workspaceHome'>
+                        {mostrar ? 'Cancelar' : 'Crear Canal'}
+                    </button>
+                </div>
             </div>
-            {mostrar && <FormHomeworkspaces handleSubmit={handleSubmit} />}
-            <button onClick={toggle}>
-                {mostrar ? 'Cancelar' : 'Crear Canal'}
-            </button>
         </section>
     )
 }

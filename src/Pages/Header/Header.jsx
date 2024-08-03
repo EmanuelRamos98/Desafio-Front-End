@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './header.css'
 import { obtenerUser } from '../WorkspacesHome/obtenerWorkspaces'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-
+import { FaArrowLeft } from "react-icons/fa";
 
 const Header = () => {
     const user = obtenerUser()
@@ -30,7 +30,9 @@ const Header = () => {
     return (
         <nav className='container_header'>
             <div className='perfil_img_container'>
-                {mostrar && <button onClick={handleBack}>volver</button>}
+                <div className='btn_container_home'>
+                    {mostrar && <button onClick={handleBack} className='btn_back_header'><FaArrowLeft /></button>}
+                </div>
                 <label>
                     <Link to={'/profileInfo/:id_profile'}>
                         <img src={user.img_perfil} alt="" className='img_perfil' />

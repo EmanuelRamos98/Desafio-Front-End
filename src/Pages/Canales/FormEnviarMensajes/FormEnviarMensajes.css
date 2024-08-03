@@ -1,0 +1,18 @@
+.container_form_enviar{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+.text_mensaje{
+    border-radius: 20px;
+    height: 30px;
+}
+.btn_mensaje{
+    background-color: blueviolet;
+    border: none;
+    color: white;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+}

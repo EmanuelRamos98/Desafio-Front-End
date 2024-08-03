@@ -1,0 +1,61 @@
+.titulo_canal{
+    padding-top: 15px;
+}
+.container_chat {
+    width: 344px;
+    height: 100vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.canal_container_chat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.canal_mensajes_container {
+    padding: 0 20px;
+    padding-bottom: 70px;
+}
+
+.canal_mensaje {
+    width: 305px;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 20px 0;
+    background-color: blueviolet;
+}
+
+.canal_nombre {
+    font-size: 1.5rem;
+    font-family: Josefin Sans;
+    font-weight: 800;
+    color: white;
+}
+
+.canal_texto {
+    color: white;
+    font-family: Montserrat;
+    font-weight: 400;
+    padding: 5px;
+}
+
+.canal_fecha {
+    display: flex;
+    justify-content: flex-end;
+    color: white;
+    font-family: Montserrat;
+    font-weight: 400;
+}
+
+.container_canal_form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 805px;
+    background-color: blueviolet;
+    height: 80px;
+}
